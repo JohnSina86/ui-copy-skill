@@ -37,7 +37,7 @@ Stop after three rewrites. If the headline still fails, the brief lacks the diff
 
 ## 3. Headline and CTA rules
 - **Verb plus object, for action controls.** A button or action link names the action and its object: "Order the flat white", "Export this report", "Invite your team". Never "Get started", "Learn more", "Submit", "Continue", "Click here" or "Go" without an object. If the object is on the button already by context (a card titled "Weekly report" with "Download"), say so in the rule column. A **navigation link** is not an action control: it is judged on naming its destination, so "Pricing" in the nav is right when it opens the pricing page.
-- **The label matches the result.** After the tap, the user sees what the button promised: the page heading, the created thing or the completed action. A button that says "Send" and opens a form is wrong.
+- **The label names what happens immediately after the tap.** The next step takes precedence over the benefit: the user must see what the button promised on the very next screen (its heading, the created thing or the completed action). "Request a demo" on a button that opens a booking form and "Start free trial" on one that starts the trial are right. When the benefit comes later, name the step and add the benefit after it: "Enter your postcode to see this week's jobs" passes; "See this week's jobs" on a button that opens postcode entry fails, and so does "Send" on a button that opens a form.
 - **One promise per headline.** "Faster checkout and better analytics and lower fees" is three headlines. Pick the one the brief ranks first; the others become section headings.
 - **Numbers over adjectives**, when the brief supplies the number: "Set up in 4 minutes" beats "Quick setup". Without a number, cut the adjective instead of inventing one (section 0.4).
 - **Headline length.** A hero headline fits on two lines at 375 px, which is about eight words in most display faces. A CTA label is two to four words.
@@ -61,7 +61,7 @@ Counts in a state come from the data ("3 photos"), never from a guess. A string 
 Run [placeholder-detector.md](references/placeholder-detector.md) over **every string** before and after you write, including alt text, labels, badges and the `<title>`. It lists the tells with a check for each. The main ones:
 1. **Lorem ipsum** and any other filler text, in any language.
 2. **Template strings**: "Your text here", "Insert headline", "Feature 1", "Image description", `{{name}}`, `[Brand]`, "John Doe", `example.com`, 555 phone numbers. A field-name word ("Title", "Description") or a plausible real name is a candidate that needs context, not a certain hit.
-3. **Repeated adjectives**: the same adjective twice on one screen, or any of the ban list's adjectives at all.
+3. **Filler adjectives**: a ban-list adjective used as an unsupported evaluative claim ("Powerful analytics"), or the same evaluative adjective twice on one screen. Factual descriptions ("smooth leather" in alt text), established product terms ("Advanced settings") and accurate field or destination names ("Unique invoice number") are exempt.
 4. **A heading that only names its slot**: a generic section word ("Features", "About", "Welcome"), a document default ("Home", "Untitled"), or the brand name alone as the hero. Matching a descriptive nav label or `<title>` is not a tell on its own.
 5. **Three-item lists with parallel vague nouns**: "Fast. Simple. Secure.", "Speed. Quality. Trust.", or three cards whose headings are abstract nouns with no object.
 
@@ -69,7 +69,7 @@ Report the sweep as a table: location, string, tell, fix. A sweep that finds not
 
 ## 6. Workflow
 1. Do section 0. List the strings in scope with their locations, their role (marketing claim, action control, navigation, transactional heading, state, label, alt text) and, for supplied strings, their class (section 0.3).
-2. **Check every string against the rules for its role**, in both modes: the detector (section 5) and the ban list (section 2) on everything; the specificity test on marketing claims (section 1); verb plus object and label-matches-result on action controls, and destination naming on navigation (section 3); required parts and length on states (section 4); and the voice brief on everything. Record one table: location, string, role, rule failed, proposed correction. A review without writing **stops here**, after reporting every violation with its proposed correction, and applies nothing.
+2. **Check every string against the rules for its role**, in both modes: the detector (section 5) and the ban list (section 2) on everything; the specificity test on marketing claims (section 1); verb plus object and naming the immediate next step on action controls, and destination naming on navigation (section 3); required parts and length on states (section 4); and the voice brief on everything. Record one table: location, string, role, rule failed, proposed correction. A review without writing **stops here**, after reporting every violation with its proposed correction, and applies nothing.
 3. **Write.** Rewrite each failing string that is authorised for rewriting (section 0.3) under the rule it failed. Keep every string inside the voice brief: the three never-words don't appear, and each string could follow the brand's one sentence without a change of register. Preserved copy stays as it is; its violations become proposals.
 4. **Deliver one string table**: location, before, after, rule applied. Copy authorised for rewriting shows the original as before and the rewrite as after. Preserved copy shows the original in both columns, marked preserved; its proposals go in the Proposed changes block, and missing facts in Needs a fact.
 5. Run the checklist in section 7, then re-run the detector on your own output and report the count.
@@ -80,7 +80,7 @@ The quality items apply to **strings you wrote or rewrote** (copy authorised for
 - [ ] Voice brief written or read, marked assumed if written here, and placed at the top.
 - [ ] Every supplied string sorted into preserved or authorised for rewriting, and the class stated.
 - [ ] Every marketing headline and feature claim you wrote passes the specificity test with the brand name removed, or carries `[needs a fact]`.
-- [ ] Every action control you wrote is verb plus object and its label matches what happens next; every navigation label and transactional heading names its destination or content.
+- [ ] Every action control you wrote is verb plus object and names what happens immediately after the tap, with any later benefit after the step; every navigation label and transactional heading names its destination or content.
 - [ ] One promise per headline; numbers only where the brief supplies them.
 - [ ] Every loading, empty, error, success and confirmation string you wrote has its required parts and is under 12 words, and promises only what the product is shown to do.
 - [ ] Detector run over every string, including alt text and the `<title>`, before and after writing, with both counts reported.

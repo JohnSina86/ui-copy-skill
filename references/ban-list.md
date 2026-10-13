@@ -57,9 +57,9 @@ A phrase on this list can stay in the deliverable only with a one-line justifica
 | "Submit" | Names the mechanism, not the result | `<The verb the user means> <object>` ("Send the application", "Save your address") |
 | "Continue" / "Next" / "Proceed" | No object; acceptable only inside a numbered flow whose heading supplies it, and say so | `Go to <named next step>` ("Choose a delivery time") |
 | "Click here" / "Tap here" / "Go" | Names the gesture | `<Verb> <object>` |
-| "Sign up" (as a hero CTA) | Object is the account, not the benefit | `<Verb> <the first thing the account gives>` ("Start the 14-day trial" only if the brief says 14) |
-| "Try it free" / "Try for free" | "It" names nothing | `Try <the named product or plan> free` with the terms from the brief |
-| "Request a demo" / "Contact sales" | Fine as a secondary action; fails as the primary one because the object is a meeting, not the product | `See <the named thing> live` or keep, labelled secondary |
+| "Sign up" alone (as a hero CTA) | No object: the reader can't tell what the account is for | `<The step the tap opens> to <the later benefit>` ("Sign up to see your funnel", "Create your account"); the step comes first, because it is what happens next ("Start the 14-day trial" only if the tap starts the trial and the brief says 14) |
+| "Try it free" / "Try for free" | "It" names nothing | `Try <the named product or plan> free`, or "Start free trial" when the tap starts it, with the terms from the brief |
+| "Request a demo" / "Contact sales" **when the tap opens something else** (a video, a signup form) | The label names a meeting that isn't what happens | `<Verb> <what the tap opens>`. When the tap opens a booking form, "Request a demo" is accurate and stays, primary or secondary; never swap it for a benefit such as "See it live" that the next screen doesn't show |
 | "OK" / "Yes" / "Confirm" on a confirmation | Doesn't say what is confirmed (SKILL.md section 4) | Repeat the verb and object: "Delete 3 photos", "Cancel the order" |
 | "Download" / "Export" / "Share" alone, outside a titled card | No object | `<Verb> <object>` ("Download the invoice PDF") |
 
@@ -95,7 +95,15 @@ A phrase on this list can stay in the deliverable only with a one-line justifica
 | "Join thousands of happy customers" | Three vague claims in one line | `<Number> <named customers> <did the named thing>` |
 
 ## 7. Adjectives that do the work
-Any of these on a screen is a detector hit (placeholder tell 3), because each stands in for a fact the writer didn't have. Replace with the fact, or cut.
+These adjectives usually stand in for a fact the writer didn't have. **A hit is an unsupported evaluative claim or repeated marketing filler**: "Powerful analytics", "Seamless setup", "Beautiful dashboards", the same "simple" on two cards. That use is detector tell 5; replace it with the fact, or cut.
+
+**Not a hit**, and left alone:
+- a **factual description**: "smooth leather" in the alt text of a photo of smooth leather, "a clean white room" describing a photo;
+- **established product terminology**: "Advanced settings", "Secure Shell", "Smart TV", a plan the product actually names "Premium";
+- an **accurate field or destination name**: "Unique invoice number", "Fast lane" as the name of a real queue;
+- a claim whose **fact sits beside it** in the same string: "Fast exports: 2 seconds for 10,000 rows", when the brief supplies the figure.
+
+When the reading is unclear, quote the string and say which reading applies rather than deleting it.
 
 | Adjective | What it is hiding | Replacement pattern |
 | :--- | :--- | :--- |
@@ -146,6 +154,6 @@ The full patterns are in [state-microcopy.md](state-microcopy.md). The banned op
 
 ## Checks
 - [ ] Every string in scope was compared against sections 1 to 10, including badges, alt text and the `<title>`.
-- [ ] Every adjective in section 7 is gone, or replaced by the fact it was hiding.
+- [ ] Every section 7 adjective used as an unsupported evaluative claim or filler is gone, or replaced by the fact it was hiding; exempt uses (factual description, product terminology, accurate names, a fact beside the claim) are left alone.
 - [ ] Every banned phrase that stays has a one-line justification in the deliverable.
 - [ ] No replacement slot was filled with an invented number, customer, award or guarantee; unfilled slots read `[needs a fact: what]`.
