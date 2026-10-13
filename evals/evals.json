@@ -3,13 +3,13 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Rewrite the hero copy for Ledgerline, a B2B analytics tool for product managers at subscription companies. Our difference: it shows which step of the signup funnel loses the most users, refreshed every hour, with no engineering setup. Current hero: headline \"Ledgerline: Powerful analytics for modern teams\", subhead \"Everything you need to make data-driven decisions, seamlessly\", buttons \"Get started\" and \"Learn more\". There is no voice guide yet.",
+      "prompt": "Rewrite the hero copy for Ledgerline, a B2B analytics tool for product managers at subscription companies. Our difference: it shows which step of the signup funnel loses the most users, refreshed every hour, with no engineering setup. Current hero: headline \"Ledgerline: Powerful analytics for modern teams\", subhead \"Everything you need to make data-driven decisions, seamlessly\", buttons \"Get started\" and \"Learn more\". The primary button opens the signup form, and after signup the user lands on their own funnel view. The secondary link scrolls down to the \"How setup works\" section of the same page. There is no voice guide yet.",
       "expected_output": "An assumed voice brief at the top, then a string table with a headline that passes the specificity test with the brand name removed (names the funnel-step finding, product managers or subscription companies, and the hourly or no-setup difference), a subhead with one promise, and two buttons that are each a verb plus an object. The old strings appear as before values with the rule each one broke.",
       "files": [],
       "expectations": [
         "Puts a four-line voice brief (audience, register, three never-words, one sentence the brand would say) at the top and marks it assumed",
         "The new headline, with \"Ledgerline\" removed, names what (which signup step loses users), for whom (product managers or subscription companies) and the difference (hourly refresh or no engineering setup), and does not use powerful, modern, seamless or data-driven",
-        "Both buttons are a verb plus an object (for example \"See your funnel\" rather than \"Get started\", and \"Read the setup steps\" rather than \"Learn more\"), and the primary button's object matches what the user gets next",
+        "Each control is judged by its role and matches the destination the prompt states: the primary button is an action control, so a verb plus an object that names the funnel view or the signup that leads to it (for example \"See your signup funnel\"); the secondary link scrolls to a section, so as navigation it names that section (\"How setup works\" or \"See how setup works\" both pass); neither stays \"Get started\" or \"Learn more\"; the four pasted strings are treated as authorised for rewriting, not preserved",
         "The subhead makes one promise; the other claims become section headings or are cut",
         "Uses no number, customer or guarantee that the prompt does not supply, and writes [needs a fact: ...] where a rule asks for one",
         "Delivers a string table with location, before, after and the rule applied, and reports a detector count before and after"
@@ -45,7 +45,7 @@
     },
     {
       "id": 4,
-      "prompt": "Our founder wrote this headline and it is final: \"Bloom: The smarter way to manage your garden\". Write the rest of the hero for Bloom, a reminder app that tells home gardeners in Ireland what to sow, feed and prune each week, based on their postcode's frost dates. We need a subhead and one primary button. Keep the founder's headline.",
+      "prompt": "Our founder wrote this headline and it is final: \"Bloom: The smarter way to manage your garden\". Write the rest of the hero for Bloom, a reminder app that tells home gardeners in Ireland what to sow, feed and prune each week, based on their postcode's frost dates. We need a subhead and one primary button. The primary button opens the postcode entry screen, and the screen after that shows this week's sow, feed and prune jobs. Keep the founder's headline.",
       "expected_output": "The founder's headline delivered word for word in the string table, a subhead and a button that pass the rules, and a separate Proposed changes block that shows the headline fails the specificity test (with the brand name removed it fits any garden app, and \"smarter\" does the work), proposes an alternative, and leaves the decision to the owner.",
       "files": [],
       "expectations": [
@@ -53,7 +53,7 @@
         "A separate Proposed changes block gives the original, a proposal, the rule it failed (specificity test or the adjective \"smarter\") and one line of reason, and says the owner decides",
         "The proposal is not mixed into the delivered strings and is not presented as applied",
         "The subhead names what (weekly sow, feed and prune reminders), for whom (home gardeners in Ireland) or the difference (postcode frost dates), and makes one promise",
-        "The primary button is a verb plus an object that matches what happens next (for example entering a postcode or seeing this week's jobs), not \"Get started\"",
+        "The primary button is a verb plus an object that matches the stated destination (entering a postcode, or seeing this week's jobs), not \"Get started\"",
         "No invented facts: no plant count, user count or price appears unless the prompt gave one"
       ]
     }
