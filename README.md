@@ -28,7 +28,7 @@ The assistant will show you a short **voice brief** (who you're talking to, how 
 
 Install a tagged release, so you get a reviewed version and not whatever the default branch holds later.
 
-> **Current release: none yet. `v1.0.0` is pending.** The tag is created only after the checks in [`RELEASING.md`](RELEASING.md) pass, including a hand run of the evals with the results recorded in the changelog below. Until then the install lines below point at a tag that does not exist, and `main` holds the reviewed branch. Once tagged, confirm an install with `git -C <install dir> describe --tags`, which should print `v1.0.0`.
+> **Current release: `v1.0.0`.** To confirm an install, run `git -C <install dir> describe --tags`, which should print `v1.0.0`.
 
 ### Claude Code
 User level, so the skill is available in every project:
@@ -83,7 +83,7 @@ RELEASING.md                        the release checklist
 
 ## Changelog
 
-- **v1.0.0 (pending, not tagged)**: first version.
+- **v1.0.0**: first version.
   - The specificity test, the ban list with replacement patterns, the voice brief block, headline and CTA rules, state microcopy under 12 words with required parts per state, and the placeholder detector with twelve tells.
   - Supplied copy is preserved and proposals go in their own block; no invented facts, with `[needs a fact]` in their place. An error after a dropped connection is written as an unknown outcome unless the client knows the request never left, "saved" and "retry" are promised only with product evidence, and a statement about money says whether the card was never charged, the hold was released or the charge was refunded.
   - **Functional evals, hand-run on 2026-10-13** in fresh subagent contexts that read only this skill (per-expectation results in the pull request). First round: eval 1 passed 4 of 6, then 5 of 6 after the preserved-copy rule was corrected; evals 2, 3 and 4 passed 6 of 6. Second round, after the second inspection's fixes (string classes, role-based rules, status versus resend, detector candidates, CTA destinations in the prompts): evals 2, 3 and 4 passed 6 of 6; eval 1 passed 5 of 6 twice. The first of those runs exposed that the skill's own passing headline example named no audience; the example was fixed and the final run's headline names all three parts. Its remaining fail is expectation 3 as then worded, which required the secondary link to be verb plus object although it scrolls to a section; the expectation was corrected to judge it as navigation, under which that run passes. Third round, after the third inspection's fixes (the button label names the immediate next step before any later benefit, filler adjectives exclude factual and product terms, money states are kept apart): evals 1 and 4, whose expectations changed, were re-run and passed 6 of 6 each ("Sign up to see your funnel"; "Enter your postcode"). Evals 2 and 3 were not re-run; their expectations did not change. Fourth round, after the unknown-outcome fix (the pattern now tells the user not to repeat the action and names a real status path, never "check, then order again"): eval 2, whose expectation changed, was re-run and passed 6 of 6 ("Couldn't confirm your order. Don't order again; ask at the counter.", no Retry, no timing).
