@@ -28,7 +28,7 @@ The assistant will show you a short **voice brief** (who you're talking to, how 
 
 Install a tagged release, so you get a reviewed version and not whatever the default branch holds later.
 
-> **Current release: none yet. `v1.0.0` is pending.** The tag is created only after the checks in [`RELEASING.md`](RELEASING.md) pass, including a hand run of the evals with the results recorded in the changelog below. Until then the install lines below point at a tag that does not exist, and `main` holds the reviewed branch. Once tagged, confirm an install with `git -C <install dir> describe --tags`, which should print `v1.0.0`.
+> **Current release: `v1.0.0`.** To confirm an install, run `git -C <install dir> describe --tags`, which should print `v1.0.0`.
 
 ### Claude Code
 User level, so the skill is available in every project:
