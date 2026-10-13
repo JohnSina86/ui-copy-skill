@@ -1,0 +1,61 @@
+{
+  "skill_name": "ui-copy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Rewrite the hero copy for Ledgerline, a B2B analytics tool for product managers at subscription companies. Our difference: it shows which step of the signup funnel loses the most users, refreshed every hour, with no engineering setup. Current hero: headline \"Ledgerline: Powerful analytics for modern teams\", subhead \"Everything you need to make data-driven decisions, seamlessly\", buttons \"Get started\" and \"Learn more\". The primary button opens the signup form, and after signup the user lands on their own funnel view. The secondary link scrolls down to the \"How setup works\" section of the same page. There is no voice guide yet.",
+      "expected_output": "An assumed voice brief at the top, then a string table with a headline that passes the specificity test with the brand name removed (names the funnel-step finding, product managers or subscription companies, and the hourly or no-setup difference), a subhead with one promise, a primary button that names the signup step it opens, and a secondary link that names the setup section it scrolls to. The old strings appear as before values with the rule each one broke.",
+      "files": [],
+      "expectations": [
+        "Puts a four-line voice brief (audience, register, three never-words, one sentence the brand would say) at the top and marks it assumed",
+        "The new headline, with \"Ledgerline\" removed, names what (which signup step loses users), for whom (product managers or subscription companies) and the difference (hourly refresh or no engineering setup), and does not use powerful, modern, seamless or data-driven",
+        "Each control is judged by its role and names what happens immediately after the tap: the primary button opens the signup form, so its label is a verb plus an object naming that step, optionally followed by the later benefit (\"Create your account\" and \"Sign up to see your funnel\" pass; \"See your signup funnel\", which promises the funnel view without naming the signup step, fails); the secondary link scrolls to a section, so as navigation it names that section (\"How setup works\" or \"See how setup works\" both pass); neither stays \"Get started\" or \"Learn more\"; the four pasted strings are treated as authorised for rewriting, not preserved",
+        "The subhead makes one promise; the other claims become section headings or are cut",
+        "Uses no number, customer or guarantee that the prompt does not supply, and writes [needs a fact: ...] where a rule asks for one",
+        "Delivers a string table with location, before, after and the rule applied, and reports a detector count before and after"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write the state microcopy for the order basket in a mobile ordering app for Marlowe's, a single independent cafe. Regulars order on their phone so the drink is on the counter when they arrive; the cafe says drinks take about 6 minutes. The basket loads from the server, can be empty, can fail when the card is declined or when the phone loses its connection while sending the order, confirms the order, and lets the user cancel an order the counter has already started. The cafe never uses the words \"seamless\", \"journey\" or \"experience\".",
+      "expected_output": "A loading, an empty, two error, a success and a confirmation string for the basket, each under 12 words, each with the required parts for its state, in a plain counter-side register, with the 6-minute figure used in the success state, the connection error written as an unknown outcome with a place to check, and the confirmation button repeating the verb and object.",
+      "files": [],
+      "expectations": [
+        "The loading string names what is loading (the basket or the order), not \"Loading...\" or \"Please wait\"",
+        "The empty string says why it is empty and gives a next step that names a thing (add a drink, see the menu), not \"No items\"",
+        "The card-declined error says what happened and gives at least one way out (another card, pay at the counter), without \"Something went wrong\", \"Oops\" or blame",
+        "The offline error does not claim the order was not sent unless it distinguishes a request that never left from one whose outcome is unknown; for the unknown case it says the order couldn't be confirmed, tells the user not to order again while the outcome is unknown, and points to a status path the prompt supports (the counter) with no timing the prompt doesn't state; it fails if it invites the user to check a status page and then order again (for example \"Check Orders before ordering again\"), and it does not promise a saved basket or a safe retry, because the prompt gives no evidence of either (a [needs a fact] marker for them is acceptable)",
+        "The success string says the order was sent and uses the 6-minute figure from the prompt rather than an invented time, and the confirmation names the consequence (the counter has started it) with a button that repeats the verb and object, never \"Yes\" or \"OK\"",
+        "Every string is under 12 words, and none contains seamless, journey or experience"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Sweep this landing page for placeholder copy and list what you find. Do not rewrite anything yet.\n\n<title>Home</title>\n<nav>Features · Pricing · About</nav>\n<h1>Welcome to Nimbus</h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>\n<a href=\"#\">Learn more</a>\n<img src=\"hero.png\" alt=\"image\">\n<h2>Features</h2>\n<div class=\"card\"><h3>Fast</h3><p>Your text here</p></div>\n<div class=\"card\"><h3>Simple</h3><p>Powerful tools for modern teams.</p></div>\n<div class=\"card\"><h3>Secure</h3><p>Simple and powerful security for everyone.</p></div>\n<p>Trusted by 10,000+ companies</p>\n<footer>Contact: john.doe@example.com · (555) 123-4567</footer>",
+      "expected_output": "A sweep table with one row per hit (location, string, tell, fix or [needs a fact]), a count of tells against a count of strings, and no rewritten page, because the prompt asked for the sweep only.",
+      "files": [],
+      "expectations": [
+        "Flags the lorem ipsum paragraph, \"Your text here\", alt=\"image\", \"Learn more\", the example.com address and the 555 number as placeholder tells",
+        "Flags the <title> \"Home\" as a document default and the h2 \"Features\" as a heading that only names its slot, with a fix that says what the section shows; it does not flag \"Pricing\" or \"About\" in the nav merely for being labels",
+        "Flags \"Fast\", \"Simple\", \"Secure\" as a three-item list of vague parallel words, and the repeated adjectives powerful and simple across the cards",
+        "Flags \"Trusted by 10,000+ companies\" as a claim with no source rather than accepting the number",
+        "Reports the number of tells against the number of strings swept, and lists anything it could not sweep",
+        "Does not rewrite the page or invent facts for the fixes; fixes without a source read [needs a fact: ...]"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Our founder wrote this headline and it is final: \"Bloom: The smarter way to manage your garden\". Write the rest of the hero for Bloom, a reminder app that tells home gardeners in Ireland what to sow, feed and prune each week, based on their postcode's frost dates. We need a subhead and one primary button. The primary button opens the postcode entry screen, and the screen after that shows this week's sow, feed and prune jobs. Keep the founder's headline.",
+      "expected_output": "The founder's headline delivered word for word in the string table, a subhead and a button that pass the rules, and a separate Proposed changes block that shows the headline fails the specificity test (with the brand name removed it fits any garden app, and \"smarter\" does the work), proposes an alternative, and leaves the decision to the owner.",
+      "files": [],
+      "expectations": [
+        "The delivered headline is exactly \"Bloom: The smarter way to manage your garden\", unchanged",
+        "A separate Proposed changes block gives the original, a proposal, the rule it failed (specificity test or the adjective \"smarter\") and one line of reason, and says the owner decides",
+        "The proposal is not mixed into the delivered strings and is not presented as applied",
+        "The subhead names what (weekly sow, feed and prune reminders), for whom (home gardeners in Ireland) or the difference (postcode frost dates), and makes one promise",
+        "The primary button names what happens immediately after the tap, which is postcode entry: \"Enter your postcode\" or \"Enter your postcode to see this week's jobs\" pass; a label that promises the jobs without naming the postcode step (for example \"See this week's jobs\") fails, and so does \"Get started\"",
+        "No invented facts: no plant count, user count or price appears unless the prompt gave one"
+      ]
+    }
+  ]
+}

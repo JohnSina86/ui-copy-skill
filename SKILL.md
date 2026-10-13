@@ -1,0 +1,96 @@
+---
+name: ui-copy
+description: >-
+  Writes and reviews UI strings: headlines, CTAs, button and form labels, helper text, and loading, empty, error, success and confirmation states, with a specificity test, a ban list and a placeholder detector. Use when asked to write, rewrite, review or fix UI copy or microcopy, or when copy reads as placeholder or could be any product's. Not for essays, emails, docs, articles, SEO or translation.
+metadata:
+  version: "1.0.0"
+---
+
+# UI Copy (v1.0)
+
+Most generic UI is generic because of its words: a headline that fits any competitor, a button that says "Get started" with nothing to start, a card that still says "Your text here". This skill writes and reviews the strings on a screen. It owns no colours, tokens or laws: looks are `ui-styles`, structure and behaviour are `ux-laws`. This file is the routing layer; the phrase lists, patterns and the detector live in `references/`.
+
+**Scope.** Strings only: headlines, subheads, buttons and links, labels, placeholders, helper text, alt text, the `<title>`, and the loading, empty, error, success and confirmation states. It never changes what a control does. If the only honest label implies a different behaviour, say so and leave the behaviour to the owner.
+
+## 0. Before you write (mandatory)
+1. **Read the brief.** You need the product, the audience and the one thing the product does differently. If any of the three is missing, ask for it once, then state your assumption and label every string that rests on it.
+2. **Read or write the voice brief** ([voice-brief.md](references/voice-brief.md)): audience, register, three words the brand would never use, one sentence the brand would say. If none exists, write one from the brief, mark it **assumed**, and put it at the top of your answer so the owner can correct it.
+3. **Sort every supplied string into one of two classes, and say which.** **Preserved copy** is a string the user marked as final, asked you to keep, or supplied as context without asking for a change. It goes into the deliverable unchanged. If it fails a rule, the proposal goes in a separate **Proposed changes** block (original, proposal, the rule it failed, one line of reason), never applied silently, never mixed into the delivered strings, and the original is never reported as passing: it stays unresolved until the owner decides. **Copy authorised for rewriting** is a string the user pasted and asked you to rewrite, fix or improve, plus every string you write from scratch. It is rewritten in the string table with the original as the before value. When the request doesn't say which, treat the string as preserved and ask once.
+4. **Never invent a fact.** A number, a feature, a customer, a price or a guarantee appears in a string only if the brief or the product supports it. When a rule below asks for one you don't have, write `[needs a fact: what]` in its place and list it under **Needs a fact**.
+
+## 1. The specificity test
+**Applies to marketing claims**: the hero headline, value propositions, feature headings and feature claims. It does not apply to navigation labels or transactional headings ("Order history", "Pricing", "Your invoices", "Step 2 of 4"), which are judged on one thing only: do they accurately name their destination or content (section 5, tell 6).
+
+Take the headline and remove the brand name. Then ask: **could a competitor publish this unchanged?** If yes, it fails. "Analytics that work for you" fails. "Product managers: see which signup step loses the most users, by Tuesday" passes, because it names what (the losing step), for whom (product managers) and the difference (by Tuesday). An audience implied only by the object ("signup step") doesn't count as naming it.
+
+Rewrite until the headline names all three:
+| Part | Question it answers | Fails when |
+| :--- | :--- | :--- |
+| **What** | What does the user get or do? | A category word stands in for the thing: "a solution", "a platform", "tools" |
+| **For whom** | Who is this for, in their own words? | "Everyone", "teams", "businesses", or nobody at all |
+| **The difference** | Why this and not the one next to it? | An adjective does the work: "powerful", "seamless", "modern", "beautiful" |
+
+Stop after three rewrites. If the headline still fails, the brief lacks the difference. Say so and write `[needs a fact: the difference]` rather than inventing one. The hero headline carries all three parts itself: a part that only the subhead supplies doesn't count. Run the same test on subheads and feature claims; there, the "for whom" part may be inherited from the hero.
+
+## 2. The ban list
+[ban-list.md](references/ban-list.md) groups the interchangeable phrases by where they appear (headlines, CTAs, feature blurbs, badges, trust lines, states) and gives each a **replacement pattern**, never a replacement phrase. A replacement phrase would become the next cliché. A banned phrase that stays must be justified in one line in the deliverable; a voice brief that quotes it as the brand's own sentence is a valid justification.
+
+## 3. Headline and CTA rules
+- **Verb plus object, for action controls.** A button or action link names the action and its object: "Order the flat white", "Export this report", "Invite your team". Never "Get started", "Learn more", "Submit", "Continue", "Click here" or "Go" without an object. If the object is on the button already by context (a card titled "Weekly report" with "Download"), say so in the rule column. A **navigation link** is not an action control: it is judged on naming its destination, so "Pricing" in the nav is right when it opens the pricing page.
+- **The label names what happens immediately after the tap.** The next step takes precedence over the benefit: the user must see what the button promised on the very next screen (its heading, the created thing or the completed action). "Request a demo" on a button that opens a booking form and "Start free trial" on one that starts the trial are right. When the benefit comes later, name the step and add the benefit after it: "Enter your postcode to see this week's jobs" passes; "See this week's jobs" on a button that opens postcode entry fails, and so does "Send" on a button that opens a form.
+- **One promise per headline.** "Faster checkout and better analytics and lower fees" is three headlines. Pick the one the brief ranks first; the others become section headings.
+- **Numbers over adjectives**, when the brief supplies the number: "Set up in 4 minutes" beats "Quick setup". Without a number, cut the adjective instead of inventing one (section 0.4).
+- **Headline length.** A hero headline fits on two lines at 375 px, which is about eight words in most display faces. A CTA label is two to four words.
+- **Name the thing, not the category.** "Your invoices" not "Your documents", "the flat white" not "the item".
+- **No question headlines that the reader answers with "no"**, and no heading that only names its slot: "Features" over the features, "Welcome" or the brand name alone as the hero (section 5). A heading may match its nav label and the `<title>` when all three describe the content ("Order history").
+
+## 4. State microcopy
+Every component that loads or submits data has these states (the suite builds them at stage 3), and each one has required parts. Each string is **under 12 words**. Patterns and examples are in [state-microcopy.md](references/state-microcopy.md).
+
+| State | Must say | Must not | Example |
+| :--- | :--- | :--- | :--- |
+| **Loading** | What is loading | "Loading…" alone, "Please wait" | "Loading your October invoices" |
+| **Empty** | Why it is empty and what to do next | "No data", "Nothing here" with no action | "No orders yet. Add a drink to start one." |
+| **Error** | What happened and the way out | "Something went wrong", "Oops", blame | "Card declined. Try another card or pay at the counter." |
+| **Success** | What happened and what is next | "Success!" alone | "Order sent to the counter. Ready in about 6 minutes." |
+| **Confirmation** | What will happen and to what; the button repeats the verb | "Are you sure?", "OK", "Yes" | "Delete 3 photos? This can't be undone." with a "Delete 3 photos" button |
+
+Counts in a state come from the data ("3 photos"), never from a guess. A string that needs the user to retry says when or how, not just "Try again".
+
+## 5. The placeholder detector
+Run [placeholder-detector.md](references/placeholder-detector.md) over **every string** before and after you write, including alt text, labels, badges and the `<title>`. It lists the tells with a check for each. The main ones:
+1. **Lorem ipsum** and any other filler text, in any language.
+2. **Template strings**: "Your text here", "Insert headline", "Feature 1", "Image description", `{{name}}`, `[Brand]`, "John Doe", `example.com`, 555 phone numbers. A field-name word ("Title", "Description") or a plausible real name is a candidate that needs context, not a certain hit.
+3. **Filler adjectives**: a ban-list adjective used as an unsupported evaluative claim ("Powerful analytics"), or the same evaluative adjective twice on one screen. Factual descriptions ("smooth leather" in alt text), established product terms ("Advanced settings") and accurate field or destination names ("Unique invoice number") are exempt.
+4. **A heading that only names its slot**: a generic section word ("Features", "About", "Welcome"), a document default ("Home", "Untitled"), or the brand name alone as the hero. Matching a descriptive nav label or `<title>` is not a tell on its own.
+5. **Three-item lists with parallel vague nouns**: "Fast. Simple. Secure.", "Speed. Quality. Trust.", or three cards whose headings are abstract nouns with no object.
+
+Report the sweep as a table: location, string, tell, fix. A sweep that finds nothing says "0 tells in N strings", with N counted.
+
+## 6. Workflow
+1. Do section 0. List the strings in scope with their locations, their role (marketing claim, action control, navigation, transactional heading, state, label, alt text) and, for supplied strings, their class (section 0.3).
+2. **Check every string against the rules for its role**, in both modes: the detector (section 5) and the ban list (section 2) on everything; the specificity test on marketing claims (section 1); verb plus object and naming the immediate next step on action controls, and destination naming on navigation (section 3); required parts and length on states (section 4); and the voice brief on everything. Record one table: location, string, role, rule failed, proposed correction. A review without writing **stops here**, after reporting every violation with its proposed correction, and applies nothing.
+3. **Write.** Rewrite each failing string that is authorised for rewriting (section 0.3) under the rule it failed. Keep every string inside the voice brief: the three never-words don't appear, and each string could follow the brand's one sentence without a change of register. Preserved copy stays as it is; its violations become proposals.
+4. **Deliver one string table**: location, before, after, rule applied. Copy authorised for rewriting shows the original as before and the rewrite as after. Preserved copy shows the original in both columns, marked preserved; its proposals go in the Proposed changes block, and missing facts in Needs a fact.
+5. Run the checklist in section 7, then re-run the detector on your own output and report the count.
+6. If the user asks how the copy looks or whether the screen is usable, that is `ui-styles` or `ux-laws`. Don't grade layout, contrast or hit areas here.
+
+## 7. Pre-delivery checklist
+The quality items apply to **strings you wrote or rewrote** (copy authorised for rewriting, section 0.3). Preserved copy, before-values, quoted evidence and the voice brief's own lines are exempt from them: a violation in preserved copy is reported as an unresolved proposal for the owner, never fixed silently and never marked as passing.
+- [ ] Voice brief written or read, marked assumed if written here, and placed at the top.
+- [ ] Every supplied string sorted into preserved or authorised for rewriting, and the class stated.
+- [ ] Every marketing headline and feature claim you wrote passes the specificity test with the brand name removed, or carries `[needs a fact]`.
+- [ ] Every action control you wrote is verb plus object and names what happens immediately after the tap, with any later benefit after the step; every navigation label and transactional heading names its destination or content.
+- [ ] One promise per headline; numbers only where the brief supplies them.
+- [ ] Every loading, empty, error, success and confirmation string you wrote has its required parts and is under 12 words, and promises only what the product is shown to do.
+- [ ] Detector run over every string, including alt text and the `<title>`, before and after writing, with both counts reported.
+- [ ] No ban-list phrase remains in your strings without a one-line justification.
+- [ ] None of the three never-words appear in any string you wrote.
+- [ ] Preserved copy delivered unchanged and copy authorised for rewriting rewritten in the table; unresolved violations in preserved copy, your proposals and missing facts in their own blocks.
+- [ ] No string changes what a control does; any label that would is flagged for the owner.
+
+## References
+- [ban-list.md](references/ban-list.md): interchangeable phrases grouped by type, each with a replacement pattern.
+- [voice-brief.md](references/voice-brief.md): the voice brief block and a filled example.
+- [state-microcopy.md](references/state-microcopy.md): patterns and examples for loading, empty, error, success and confirmation states.
+- [placeholder-detector.md](references/placeholder-detector.md): the tells, a check for each, and the sweep table.

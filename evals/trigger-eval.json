@@ -1,0 +1,82 @@
+[
+ {
+  "query": "rewrite the hero headline and buttons on our landing page, they could be any SaaS",
+  "should_trigger": true
+ },
+ {
+  "query": "draft an email to our customers announcing the new pricing",
+  "should_trigger": false
+ },
+ {
+  "query": "write the loading, empty and error messages for the orders list",
+  "should_trigger": true
+ },
+ {
+  "query": "write a blog post about why onboarding copy matters",
+  "should_trigger": false
+ },
+ {
+  "query": "the CTA just says Get started, give me something that says what the button does",
+  "should_trigger": true
+ },
+ {
+  "query": "write the README for this repo with install steps and a usage example",
+  "should_trigger": false
+ },
+ {
+  "query": "check this page for placeholder text, lorem ipsum and 'your text here' before we ship",
+  "should_trigger": true
+ },
+ {
+  "query": "translate the app's UI strings from English into German",
+  "should_trigger": false
+ },
+ {
+  "query": "our error messages all say Something went wrong, fix the wording",
+  "should_trigger": true
+ },
+ {
+  "query": "write a 1500-word SEO article targeting the keyword 'best project management software'",
+  "should_trigger": false
+ },
+ {
+  "query": "write the microcopy for the delete confirmation dialog and the success toast",
+  "should_trigger": true
+ },
+ {
+  "query": "audit the UX of this checkout flow against Hick's and Fitts's laws",
+  "should_trigger": false
+ },
+ {
+  "query": "the feature cards say Fast, Simple, Secure and the copy reads like a template, make it specific to our product",
+  "should_trigger": true
+ },
+ {
+  "query": "restyle the landing page in neo-brutalism with a bold accent colour",
+  "should_trigger": false
+ },
+ {
+  "query": "give me a voice brief and button labels for a cafe ordering app",
+  "should_trigger": true
+ },
+ {
+  "query": "write the API documentation for the orders endpoint",
+  "should_trigger": false
+ },
+ {
+  "query": "review the labels, helper text and placeholders on our signup form",
+  "should_trigger": true
+ },
+ {
+  "query": "write a cover letter for a UX writer position",
+  "should_trigger": false
+ },
+ {
+  "query": "write the empty state for the inbox so people know what to do next",
+  "should_trigger": true
+ },
+ {
+  "query": "write a product requirements document for the new notifications feature",
+  "should_trigger": false
+ }
+]
