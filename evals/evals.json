@@ -17,14 +17,14 @@
     },
     {
       "id": 2,
-      "prompt": "Write the state microcopy for the order basket in a mobile ordering app for Marlowe's, a single independent cafe. Regulars order on their phone so the drink is on the counter when they arrive; the cafe says drinks take about 6 minutes. The basket loads from the server, can be empty, can fail when the card is declined or the phone goes offline, confirms the order, and lets the user cancel an order the counter has already started. The cafe never uses the words \"seamless\", \"journey\" or \"experience\".",
-      "expected_output": "A loading, an empty, two error, a success and a confirmation string for the basket, each under 12 words, each with the required parts for its state, in a plain counter-side register, with the 6-minute figure used in the success state and the confirmation button repeating the verb and object.",
+      "prompt": "Write the state microcopy for the order basket in a mobile ordering app for Marlowe's, a single independent cafe. Regulars order on their phone so the drink is on the counter when they arrive; the cafe says drinks take about 6 minutes. The basket loads from the server, can be empty, can fail when the card is declined or when the phone loses its connection while sending the order, confirms the order, and lets the user cancel an order the counter has already started. The cafe never uses the words \"seamless\", \"journey\" or \"experience\".",
+      "expected_output": "A loading, an empty, two error, a success and a confirmation string for the basket, each under 12 words, each with the required parts for its state, in a plain counter-side register, with the 6-minute figure used in the success state, the connection error written as an unknown outcome with a place to check, and the confirmation button repeating the verb and object.",
       "files": [],
       "expectations": [
         "The loading string names what is loading (the basket or the order), not \"Loading...\" or \"Please wait\"",
         "The empty string says why it is empty and gives a next step that names a thing (add a drink, see the menu), not \"No items\"",
         "The card-declined error says what happened and gives at least one way out (another card, pay at the counter), without \"Something went wrong\", \"Oops\" or blame",
-        "The offline error says the order was not sent, what is kept, and when or how to retry, not \"Try again\" alone",
+        "The offline error does not claim the order was not sent unless it distinguishes a request that never left from one whose outcome is unknown; for the unknown case it says the order couldn't be confirmed and points to where to check (the orders list or the counter) before ordering again, and it does not promise a saved basket or a safe retry, because the prompt gives no evidence of either (a [needs a fact] marker for them is acceptable)",
         "The success string says the order was sent and uses the 6-minute figure from the prompt rather than an invented time, and the confirmation names the consequence (the counter has started it) with a button that repeats the verb and object, never \"Yes\" or \"OK\"",
         "Every string is under 12 words, and none contains seamless, journey or experience"
       ]
@@ -36,7 +36,7 @@
       "files": [],
       "expectations": [
         "Flags the lorem ipsum paragraph, \"Your text here\", alt=\"image\", \"Learn more\", the example.com address and the 555 number as placeholder tells",
-        "Flags the <title> \"Home\" as a document default and the h2 \"Features\" as equal to its nav label",
+        "Flags the <title> \"Home\" as a document default and the h2 \"Features\" as a heading that only names its slot, with a fix that says what the section shows; it does not flag \"Pricing\" or \"About\" in the nav merely for being labels",
         "Flags \"Fast\", \"Simple\", \"Secure\" as a three-item list of vague parallel words, and the repeated adjectives powerful and simple across the cards",
         "Flags \"Trusted by 10,000+ companies\" as a claim with no source rather than accepting the number",
         "Reports the number of tells against the number of strings swept, and lists anything it could not sweep",

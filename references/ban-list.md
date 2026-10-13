@@ -137,7 +137,7 @@ The full patterns are in [state-microcopy.md](state-microcopy.md). The banned op
 ## 10. Pricing
 | Phrase | Why it fails | Replacement pattern |
 | :--- | :--- | :--- |
-| "Simple, transparent pricing" | Two adjectives; the table proves or disproves it | Cut; the heading is the table's own name or the audience |
+| "Simple, transparent pricing" | Two adjectives; the table proves or disproves it | `Plans for <audience>` or `<What the price buys> from <price>`; a plain "Pricing" is acceptable when the nav and `<title>` say the same |
 | "Plans for every team / everyone" | For whom is everyone | `Plans for <audience A> and <audience B>` |
 | "Contact us for pricing" on a self-serve page | Hides the price | The price, or `From <price> for <named thing>` if the brief allows |
 | "Most popular" with no basis | See section 5 | The reason, or cut |

@@ -28,7 +28,7 @@ The assistant will show you a short **voice brief** (who you're talking to, how 
 
 Install a tagged release, so you get a reviewed version and not whatever the default branch holds later.
 
-> **Current release: `v1.0.0`.** To confirm an install, run `git -C <install dir> describe --tags`, which should print `v1.0.0`.
+> **Current release: none yet. `v1.0.0` is pending.** The tag is created only after the checks in [`RELEASING.md`](RELEASING.md) pass, including a hand run of the evals with the results recorded in the changelog below. Until then the install lines below point at a tag that does not exist, and `main` holds the reviewed branch. Once tagged, confirm an install with `git -C <install dir> describe --tags`, which should print `v1.0.0`.
 
 ### Claude Code
 User level, so the skill is available in every project:
@@ -83,10 +83,11 @@ RELEASING.md                        the release checklist
 
 ## Changelog
 
-- **v1.0.0**: first version.
+- **v1.0.0 (pending, not tagged)**: first version.
   - The specificity test, the ban list with replacement patterns, the voice brief block, headline and CTA rules, state microcopy under 12 words with required parts per state, and the placeholder detector with twelve tells.
-  - Supplied copy is preserved and proposals go in their own block; no invented facts, with `[needs a fact]` in their place.
-  - Four functional evals and twenty trigger queries. The trigger evals were reviewed by hand. They were **not** run through the automated tester, and the functional evals have not yet been hand-run in a fresh session.
+  - Supplied copy is preserved and proposals go in their own block; no invented facts, with `[needs a fact]` in their place. An error after a dropped connection is written as an unknown outcome unless the client knows the request never left, and "saved", "retry" and "not charged" are promised only with product evidence.
+  - **Functional evals, hand-run on 2026-10-13** in fresh subagent contexts that read only this skill (per-expectation results in the pull request): eval 1 passed 4 of 6, then 5 of 6 after the preserved-copy rule was corrected (pasted copy the user asks to rewrite is now in scope; the remaining fail is a subhead that joins two claims); evals 2, 3 and 4 passed 6 of 6.
+  - **Trigger evals, run twice on 2026-10-13** as bare queries to Sonnet subagents in an empty project folder, with the skill temporarily installed: round 1 (first description) loaded on 2 of 10 positives and 0 of 10 negatives; round 2 (current description) loaded on 3 of 10 positives and 0 of 10 negatives. The negatives hold. The positives mostly did not load because the subagents went straight to searching the empty folder and asked for input; the same queries in a real session with a real project are **unmeasured**. The held-out half was read before the description was edited, so this set is no longer blind; a release needs fresh held-out queries. The automated tester was not run.
 
 ## License
 
